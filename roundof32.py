@@ -10,15 +10,15 @@ prob13v5 = [(33.8/38.2), (4.4/38.2)]
 
 # 6 odds: 30.9%
 # 3 odds: 51.5%
-prob6v3 = [(51.5/82.4), (30.9/81.4)]
+prob6v3 = [(51.5/82.4), (30.9/82.4)]
 
 # 10 odds: 16.9%
 # 2 odds: 62.5%
 prob10v2 = [(62.5/79.4), (16.9/79.4)]
 
-# 12 odds: 14.7
+# 12 odds: 14.7%
 # 4 odds: 47.1%
-prob12v4 = [(47.1/51.8), (14.7/51.8)]
+prob12v4 = [(47.1/61.8), (14.7/61.8)]
 
 # 7 odds: 19.9
 # 2 odds: 62.5
@@ -28,6 +28,10 @@ prob7v2 = [(62.5/82.4), (19.9/82.4)]
 # 5 odds: 33.8%
 # 4 odds: 47.1%
 prob5v4 = [(47.1/80.9), (33.8/80.9)]
+
+# 1 odds: 85.3%
+# 8 odds: 9.6%
+prob8v1 = [(85.3/94.9), (9.6/94.9)]
 
 ## Will use choices when this is 1
 Ready = ['1' , '0']
@@ -127,5 +131,25 @@ print(" ")
 print(" ")
 
 ######################################
-############# MIDWEST SIDE #############
+############ MIDWEST SIDE ############
 ######################################
+
+# 8 vs 1
+seeds81M = ['North Carolina', 'Utah State']
+draw81M = choice(seeds81M, 1, True, prob8v1)
+print(draw81M)
+
+# 5 vs 4
+seeds54M = ['Auburn', 'Kansas']
+draw54M = choice(seeds54M, 1, True, prob5v4)
+print(draw54M)
+
+# 6 vs 3
+seeds63M = ['Houston', 'Iowa State']
+draw63M = choice(seeds63M, 1, True, prob6v3)
+print(draw63M)
+
+# 10 vs 2
+seeds102M = ['Kentucky', 'Seton Hall']
+draw102M = choice(seeds102M, 1, True, prob10v2)
+print(draw102M)
