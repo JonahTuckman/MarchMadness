@@ -197,3 +197,59 @@ print(draw15W)
 
 print(" ")
 print(" ")
+
+
+######################################
+########### MIDWEST SIDE #############
+######################################
+
+
+## 16 vs 1
+# No. 1 seeds are 135-1 against No. 16 seeds
+seeds16M = ['North Carolina', 'Iona']
+draw16M = choice(seeds16M, 1, True, prob16 )
+print(draw16M)
+
+
+# 8 vs 9
+# 50/50 proposition, as No. 8 and No. 9 seeds have split their 136 meetings since 1985
+seeds8M = ['Utah State', 'Washington']
+draw8M = choice(seeds8M, 1, True, prob8)
+print(draw8M)
+
+# 12 vs 5
+# 47 upsets since 1985. That is 136 games
+seeds12M = ['Auburn', 'New Mexico st']
+draw12M = choice(seeds12M, 1, True, prob12)
+print(draw12M)
+
+# 13 vs 4
+## upset 21 percent of the time
+seeds13M = ['Kansas', 'Northeastern']
+draw13M = choice(seeds13M, 1, True, prob13)
+print(draw13M)
+
+## 11 vs 6
+## 51 out of 136 opening round match-ups, or 37.5 percent of the time.
+seeds11M = ['Iowa State', 'Ohio State']
+draw11M = choice(seeds11M, 1, True, prob11)
+print(draw11M)
+
+# 14 vs 3
+## 21/136 all time
+seeds14M = ['Houston', 'Georgia State']
+draw14M = choice(seeds14M, 1, True, prob14)
+print(draw14M)
+
+## 10 vs 7
+## 10 seeds are 52-84 against 7 seeds
+seeds10M = ['Wofford', 'Seton Hall']
+draw10M = choice(seeds10M, 1, True, prob10)
+print(draw10M)
+
+## 15 vs 2
+## 8-128 all time
+seeds15M = ['Kentucky', 'Abil Christian']
+draw15M = choice(seeds15M, 1, True, prob15)
+print(draw15M)
+
