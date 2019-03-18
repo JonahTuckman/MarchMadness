@@ -138,3 +138,62 @@ print(draw15S)
 
 print(" ")
 print(" ")
+
+
+######################################
+############# WEST SIDE ##############
+######################################
+
+
+## 16 vs 1
+# No. 1 seeds are 135-1 against No. 16 seeds
+seeds16W = ['Gonzaga', 'FDU']
+draw16W = choice(seeds16W, 1, True, prob16 )
+print(draw16W)
+
+
+# 8 vs 9
+# 50/50 proposition, as No. 8 and No. 9 seeds have split their 136 meetings since 1985
+seeds8W = ['Syracuse', 'Baylor']
+draw8W = choice(seeds8W, 1, True, prob8)
+print(draw8W)
+
+# 12 vs 5
+# 47 upsets since 1985. That is 136 games
+seeds12W = ['Marquette', 'Murray State']
+draw12W = choice(seeds12W, 1, True, prob12)
+print(draw12W)
+
+# 13 vs 4
+## upset 21 percent of the time
+seeds13W = ['Florida State', 'Vermont']
+draw13W = choice(seeds13W, 1, True, prob13)
+print(draw13W)
+
+## 11 vs 6
+## 51 out of 136 opening round match-ups, or 37.5 percent of the time.
+seeds11W = ['Buffalo', 'ASU']
+draw11W = choice(seeds11W, 1, True, prob11)
+print(draw11W)
+
+# 14 vs 3
+## 21/136 all time
+seeds14W = ['Texas Tech', 'N Kentucky']
+draw14W = choice(seeds14W, 1, True, prob14)
+print(draw14W)
+
+## 10 vs 7
+## 10 seeds are 52-84 against 7 seeds
+seeds10W = ['Nevada', 'Florida']
+draw10W = choice(seeds10S, 1, True, prob10)
+print(draw10W)
+
+## 15 vs 2
+## 8-128 all time
+seeds15W = ['Michigan', 'Montana']
+draw15W = choice(seeds15W, 1, True, prob15)
+print(draw15W)
+
+
+print(" ")
+print(" ")
