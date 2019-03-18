@@ -1,5 +1,7 @@
 from numpy.random import choice
 
+##### Odds to make it to sweet 16
+
 # 9 odds: 5.1%
 # 1 odds: 85.3%
 prob9v1 = [(85.3/90.4), (5.1/90.4)]
