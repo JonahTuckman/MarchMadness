@@ -185,7 +185,7 @@ print(draw14W)
 ## 10 vs 7
 ## 10 seeds are 52-84 against 7 seeds
 seeds10W = ['Nevada', 'Florida']
-draw10W = choice(seeds10S, 1, True, prob10)
+draw10W = choice(seeds10W, 1, True, prob10)
 print(draw10W)
 
 ## 15 vs 2
