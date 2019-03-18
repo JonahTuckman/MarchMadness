@@ -12,7 +12,11 @@ prob6v2 = [(45.6/55.9), (10.3/55.9)]
 
 # 1 odds: 69.1%
 # 4 odds: 15.4%
+prob4v1 = [(69.1/74.5), (15.4/79.5)]
 
+# 2 odds: 45.6%
+# 3 odds: 25.0%
+prob3v2 = [(45.6/70.6), (25/70.6)]
 
 
 
@@ -50,5 +54,15 @@ print(" ")
 ######################################
 ############# WEST SIDE ##############
 ######################################
+
 # 1 vs 4
+seeds41W = ['Gonzaga', 'Florida St']
+draw41W = choice(seeds41W, 1, True, prob4v1)
+print(draw41W)
+
+# 2 vs 3
+seeds32W = ['Michigan', 'Texas Tech']
+draw32W = choice(seeds32W, 1, True, prob3v2)
+print(draw32W)
+
 
