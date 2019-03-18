@@ -12,7 +12,7 @@ prob6v2 = [(45.6/55.9), (10.3/55.9)]
 
 # 1 odds: 69.1%
 # 4 odds: 15.4%
-prob4v1 = [(69.1/74.5), (15.4/79.5)]
+prob4v1 = [(69.1/84.5), (15.4/84.5)]
 
 # 2 odds: 45.6%
 # 3 odds: 25.0%
@@ -66,3 +66,18 @@ draw32W = choice(seeds32W, 1, True, prob3v2)
 print(draw32W)
 
 
+print(" ")
+print(" ")
+
+
+
+######################################
+############# SOUTH SIDE #############
+######################################
+
+# 5 vs 1
+seeds51S = ['Virginia', 'Wisconsin']
+draw51S = choice(seeds51S, 1, True, prob5v1)
+print(draw51S)
+
+# 10 v 3
