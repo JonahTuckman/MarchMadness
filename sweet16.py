@@ -90,3 +90,16 @@ draw103S = choice(seeds103S, 1, True, prob10v3)
 print(draw103S)
 
 
+######################################
+########### MIDWEST SIDE #############
+######################################
+
+# 1 vs 4
+seeds41M = ['North Carolina', 'Kansas']
+draw41M = choice(seeds41M, 1, True, prob4v1)
+print(draw41M)
+
+# 2 vs 3
+seeds32M = ['Kentucky', 'Houston']
+draw32M = choice(seeds32M, 1, True, prob3v2)
+print(draw32M)
