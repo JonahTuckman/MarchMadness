@@ -9,3 +9,6 @@ All probabilities used are according to the lower seeded teams odds of advancing
 
 Probability used for first two rounds: https://www.betfirm.com/seeds-national-championship-odds/
 
+Running each program in terminal in order of:
+    firstround.py -> roundof32.py -> sweet16.py -> elite8.py -> finalfour.py -> Finals.py
+Running while filling out bracket then creating next script with odds adjusted to former predictions. 
