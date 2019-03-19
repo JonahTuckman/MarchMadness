@@ -18,6 +18,10 @@ prob4v1 = [(69.1/84.5), (15.4/84.5)]
 # 3 odds: 25.0%
 prob3v2 = [(45.6/70.6), (25/70.6)]
 
+# 3 odds: 25.0%
+# 10 odds: 5.9%
+prob10v3 = [(25/30.9), (5.9/30.9)]
+
 
 
 ## Will use choices when this is 1
@@ -81,3 +85,8 @@ draw51S = choice(seeds51S, 1, True, prob5v1)
 print(draw51S)
 
 # 10 v 3
+seeds103S = ['Purdue', 'Iowa']
+draw103S = choice(seeds103S, 1, True, prob10v3)
+print(draw103S)
+
+
