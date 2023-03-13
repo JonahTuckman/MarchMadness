@@ -1,108 +1,206 @@
+import random
 from numpy.random import choice
+import pandas as pd
 
-##### Odds to make it to elite 8
+# Import Data
+threePoint = pd.read_csv('../Data/3PPCT.csv')
+freeThrow = pd.read_csv('../Data/FTPCT.csv')
 
-# 1 odds: 69.1%
-# 5 odds: 5.9%
-prob5v1 = [(69.1/75), (5.9/75)]
+KPAdjO = pd.read_csv('../Data/KPAdjO.csv')
+KPAdjO = KPAdjO.drop(['Rk', 'Conf', 'W-L', 'AdjEM', 'AdjO', 'AdjT', 'Luck', 'AdjEM.1', 'OppO', 'OppD', 'AdjEM.2', 'AdjD'], axis = 1)
 
-# 6 odds: 10.3%
-# 2 odds: 45.6%
-prob6v2 = [(45.6/55.9), (10.3/55.9)]
+KPAdjD = pd.read_csv('../Data/KPAdjD.csv')
+KPAdjD = KPAdjD.drop(['Rk', 'Conf', 'W-L', 'AdjEM', 'AdjO', 'AdjT', 'Luck', 'AdjEM.1', 'OppO', 'OppD', 'AdjEM.2', 'AdjD'], axis = 1)
 
-# 1 odds: 69.1%
-# 4 odds: 15.4%
-prob4v1 = [(69.1/84.5), (15.4/84.5)]
+scoringMargin = pd.read_csv('../Data/scoringMargin.csv')
 
-# 2 odds: 45.6%
-# 3 odds: 25.0%
-prob3v2 = [(45.6/70.6), (25/70.6)]
+# Assigning a score to each team based on their KenPom O and D rankings
 
-# 3 odds: 25.0%
-# 10 odds: 5.9%
-prob10v3 = [(25/30.9), (5.9/30.9)]
+def AssignKPScoreO(Team):
+    score = 0
+    for index, row in KPAdjO.iterrows():
+        if Team.lower() == row['Team'].lower():
+            score += (200 - index)
+    return score / 200
+
+def AssignKPScoreD(Team):
+    score = 0
+    for index, row in KPAdjD.iterrows():
+        if Team.lower() == row['Team'].lower():
+            score += (200 - index)
+    return score / 200
+
+# Assigning a score based on freethrow rankings
+
+def AssignFTScore(Team):
+    score = 0
+    for index, row in freeThrow.iterrows():
+        if Team.lower() == row['Team'].lower():
+            score += (200 - index)
+    return score / 200
+
+# Assigning a score based on three point rankings
+
+def Assign3PTScore(Team):
+    score = 0
+    for index, row in threePoint.iterrows():
+        if Team.lower() == row['TEAM'].lower():
+            score += (200 - index)
+    return score / 200
+
+# Assigning a score based on Margin of victory
+def AssignMargin(Team):
+    score = 0
+    for index, row in scoringMargin.iterrows():
+        if Team.lower() == row['TEAM'].lower():
+            score += (200 - index)
+    return score / 200
+
+# Ranking Probabilities
+
+# prob16 = [(127/128), (1/128)]
+# prob8 = [57/128, 71/128]
+# prob12 = [(84/128), (44/128)]
+# prob13 = [100/128, 28/128]
+# prob11 = [81/128, 47/128]
+# prob14 = [(110/128), (18/128)]
+# prob10 = [(75/128), (52/128)]
+# prob15 = [(121/128), (7/128)]
+
+# Score based on ranking history
+def rankingScoreFirst(rank):
+    if rank == 1:
+        return (127/128)
+    if rank == 16:
+        return (1/128)
+    if rank == 2:
+        return (121/128)
+    if rank == 15:
+        return (7/128)
+    if rank == 3:
+        return (110/128)
+    if rank == 14:
+        return(18 / 128)
+    if rank == 4:
+        return (100/128)
+    if rank == 13:
+        return (28 / 128)
+    if rank == 5:
+        return (84/128)
+    if rank == 12:
+        return (44/128)
+    if rank == 6:
+        return (81/128)
+    if rank == 11:
+        return (47/128)
+    if rank == 7:
+        return (75/128)
+    if rank == 10:
+        return (52/128)
+    if rank == 8:
+        return(57/128)
+    if rank == 9:
+        return (71/128)
+
+# First round score
+def AssignScoreFirst(Team, Rank):
+    score = (AssignKPScoreD(Team) + (AssignKPScoreO(Team) * 1.2) + Assign3PTScore(Team) + AssignFTScore(Team) + (rankingScoreFirst(Rank) * 1.5) + AssignMargin(Team))
+    return score
+
+# Run randomizer multiple times to eliminate some level of randomness (but not too much to keep some level)
+def compete(Team1, seed1, Team2, seed2):
+    score1 = AssignScoreFirst(Team1, seed1)
+    score2 = AssignScoreFirst(Team2, seed2)
+    total = score1 + score2
+    i = 0
+    team1Count = 0
+    team2Count = 0
+    winner = pd.DataFrame(columns = ['Team', 'Seed'])
+
+    while i < 50:
+
+        num = random.uniform(0, total)
 
 
+        if num < max(score1, score2):
+            team1Count += 1
+        else:
+            team2Count += 1
 
-## Will use choices when this is 1
-Ready = ['1' , '0']
-probsReady = [.2, .8]
-drawReady = choice(Ready, 1, True, probsReady)
-print(drawReady)
+        i += 1
 
-print(" ")
-print(" ")
-
-
-
-######################################
-############# EAST SIDE ##############
-######################################
-
-## 5 vs 1
-seeds51E = ['Duke', 'Mississippi State']
-draw51E = choice(seeds51E, 1, True, prob5v1)
-print(draw51E)
-
-# 6 vs 2
-seeds62E = ['Michigan St', 'Maryland']
-draw62E = choice(seeds62E, 1, True, prob6v2)
-print(draw62E)
-
-
-print(" ")
-print(" ")
-
-
-
-######################################
-############# WEST SIDE ##############
-######################################
-
-# 1 vs 4
-seeds41W = ['Gonzaga', 'Florida St']
-draw41W = choice(seeds41W, 1, True, prob4v1)
-print(draw41W)
-
-# 2 vs 3
-seeds32W = ['Michigan', 'Texas Tech']
-draw32W = choice(seeds32W, 1, True, prob3v2)
-print(draw32W)
-
-
-print(" ")
-print(" ")
-
-
+    if team1Count > team2Count:
+        print("Winner: " + Team1 + "," " Rank " + str(seed1))
+    else:
+        print("Winner: " + Team2 + "," " Rank " + str(seed2))
 
 ######################################
 ############# SOUTH SIDE #############
 ######################################
 
-# 5 vs 1
-seeds51S = ['Virginia', 'Wisconsin']
-draw51S = choice(seeds51S, 1, True, prob5v1)
-print(draw51S)
+def thirdSouthRound():
+    print('SOUTH: Second Round')
 
-# 10 v 3
-seeds103S = ['Purdue', 'Iowa']
-draw103S = choice(seeds103S, 1, True, prob10v3)
-print(draw103S)
+    compete('Alabama', 1, 'Virginia', 4)
 
+    compete('Arizona', 2, 'Creighton', 6)
 
-print(" ")
-print(" ")
+    print("")
+    print("")
 
 ######################################
-########### MIDWEST SIDE #############
+############# EAST SIDE #############
 ######################################
 
-# 1 vs 4
-seeds41M = ['North Carolina', 'Kansas']
-draw41M = choice(seeds41M, 1, True, prob4v1)
-print(draw41M)
+def thirdEastRound():
+    print('EAST: Second Round')
 
-# 2 vs 3
-seeds32M = ['Kentucky', 'Houston']
-draw32M = choice(seeds32M, 1, True, prob3v2)
-print(draw32M)
+    compete('Purdue', 1, 'Oral Roberts', 12)
+
+    compete('Marquette', 2, 'Kansas St.', 3)
+
+    print("")
+    print("")
+
+
+
+######################################
+############# WEST SIDE #############
+######################################
+
+def thirdWestRound():
+    print('WEST: Second Round')
+
+    compete('Kansas', 1, 'Iona', 13)
+
+    compete('Gonzaga', 3, 'Northwestern', 7)
+
+    print("")
+    print("")
+
+
+
+    ######################################
+    ############# MIDWEST SIDE #############
+    ######################################
+
+def thirdMWRound():
+    print('MIDWEST: Second Round')
+
+    compete('Indiana', 4, 'Iowa', 8)
+
+    compete('Texas', 2, 'Xavier', 3)
+
+    print("")
+    print("")
+
+
+
+def thirdRound():
+    thirdSouthRound()
+    thirdMWRound()
+    thirdWestRound()
+    thirdEastRound()
+
+
+thirdRound()
